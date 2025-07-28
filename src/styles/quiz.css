@@ -1,34 +1,4 @@
 .quiz-card {
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 800px;
-  margin: 2rem auto;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.quiz-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
-
-.options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.opt-btn {
-  padding: .8rem 1rem;
-  background: #14b89f;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: background 0.3s ease;
-}
-
-/* src/styles/quiz.css */
-
-.quiz-card {
   max-width: 600px;
   margin: 2rem auto;
   background: #1f2937;
@@ -41,6 +11,7 @@
 
 .quiz-card h3 {
   margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .options {
@@ -101,10 +72,45 @@
   margin-top: 1.5rem;
 }
 
-.opt-btn:hover { background: #0da78e; }
-.opt-btn:disabled { opacity: .6; }
+.opt-btn:disabled {
+  opacity: .6;
+}
 
-.correct { background: #10b981 !important; }
-.wrong   { background: #ef4444 !important; }
+@media (max-width: 768px) {
+  .quiz-card {
+    padding: 1.5rem;
+  }
 
-.quiz-card button { margin-top: 1.5rem; padding: .8rem 1.2rem; }
+  .opt-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .quiz-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .gradient-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-card {
+    padding: 1rem;
+  }
+
+  .opt-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .quiz-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .gradient-btn {
+    font-size: 0.9rem;
+  }
+}

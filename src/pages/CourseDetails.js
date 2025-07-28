@@ -1,4 +1,3 @@
-// src/pages/CourseDetails.js
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import YouTube from 'react-youtube';
@@ -34,7 +33,7 @@ const CourseDetails = () => {
 
   const videoOptions = {
     height: '360',
-    width: '640',
+    width: '100%',
     playerVars: { autoplay: 0 },
   };
 
@@ -53,8 +52,6 @@ const CourseDetails = () => {
         <h1>{course.title}</h1>
         <p className="tag">{course.category}{course.type && ` - ${course.type}`}</p>
         <p className="difficulty">LEVEL: {course.difficulty}</p>
-
-        {/* ⛔️ Removed the image block here */}
 
         <div className="video-section">
           <YouTube videoId="dQw4w9WgXcQ" opts={videoOptions} onEnd={handleVideoEnd} />

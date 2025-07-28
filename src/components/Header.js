@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
-<a href="/" className="home-button">Home</a>
 
 function Header({ onClassChange }) {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleClassChange = (e) => {
     const selectedClass = e.target.value;
     if (onClassChange) {
-      onClassChange(selectedClass); // Send selected class to parent
+      onClassChange(selectedClass);
     }
-    navigate('/courses'); // Navigate to courses page when class is selected
+    navigate('/courses');
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
     <header className="header">
       <h1 className="logo">Eduverse</h1>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/courses">Courses</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        
 
-        <Link to="/contact">Contact</Link>
+      <button className="hamburger" onClick={toggleMenu}>
+        ☰
+      </button>
+
+      <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
+        <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+        <Link to="/courses" onClick={() => setMenuOpen(false)}>Courses</Link>
+        <Link to="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+        <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
       </nav>
     </header>
   );

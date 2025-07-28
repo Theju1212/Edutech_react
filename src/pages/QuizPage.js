@@ -1,3 +1,4 @@
+// src/pages/QuizPage.js
 import React, { useState, useEffect } from 'react';
 import QuizCard from '../components/QuizCard';
 import quizData from '../data/quizData';

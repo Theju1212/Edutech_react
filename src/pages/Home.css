@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-background: linear-gradient(to right, #0f2027, #203a43, #2c5364);/* Green shade like homepage */
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   color: white;
 }
 
@@ -11,7 +11,7 @@ background: linear-gradient(to right, #0f2027, #203a43, #2c5364);/* Green shade 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
   position: relative;
 }
 
@@ -33,7 +33,7 @@ background: linear-gradient(to right, #0f2027, #203a43, #2c5364);/* Green shade 
 }
 
 .highlight {
-  color: #22c55e; /* Bright green */
+  color: #22c55e;
   font-weight: bold;
 }
 
@@ -42,6 +42,7 @@ background: linear-gradient(to right, #0f2027, #203a43, #2c5364);/* Green shade 
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
+  margin-bottom: 4rem;
 }
 
 .course-card {
@@ -68,7 +69,7 @@ background: linear-gradient(to right, #0f2027, #203a43, #2c5364);/* Green shade 
   color: #d1fae5;
 }
 
-/* 🟢 New blinking circular button at top-right */
+/* Blinking Circular Courses Button */
 .blinking-box {
   position: absolute;
   top: 30px;
@@ -80,8 +81,8 @@ background: linear-gradient(to right, #0f2027, #203a43, #2c5364);/* Green shade 
   font-size: 1.3rem;
   cursor: pointer;
   animation: blink 1.5s infinite, bounce 1.2s ease-in-out infinite;
-  width: 80px; /* bigger width */
-  height: 80px; /* bigger height */
+  width: 80px;
+  height: 80px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -93,8 +94,18 @@ background: linear-gradient(to right, #0f2027, #203a43, #2c5364);/* Green shade 
   transform: scale(1.1);
 }
 
+.footer {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
 
-/* 🔁 Animations */
+/* Animations */
 @keyframes blink {
   0% { opacity: 1; }
   50% { opacity: 0.5; }
@@ -119,4 +130,64 @@ background: linear-gradient(to right, #0f2027, #203a43, #2c5364);/* Green shade 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
+}
+
+/* ✅ Media Queries for Responsiveness */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .home-content h1 {
+    font-size: 2.3rem;
+  }
+
+  .home-content p {
+    font-size: 1.2rem;
+  }
+
+  .course-card {
+    width: 80%;
+  }
+
+  .blinking-box {
+    width: 65px;
+    height: 65px;
+    font-size: 1rem;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .course-card {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .blinking-box {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+    top: 15px;
+    right: 15px;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
 }

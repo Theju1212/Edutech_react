@@ -34,10 +34,6 @@ const Home = () => {
       <div className="blinking-box" onClick={() => navigate('/courses')}>
         📚<br />Courses
       </div>
-
-      <footer className="footer">
-        <p>© 2025 Eduverse. All rights reserved.</p>
-      </footer>
     </section>
   );
 };

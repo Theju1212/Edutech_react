@@ -11,7 +11,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const certificateRef = useRef(null);
   const [currentCertificateCourse, setCurrentCertificateCourse] = useState(null);
-
   const dummyName = "Velvaluri Thejaswini";
 
   useEffect(() => {
@@ -23,25 +22,17 @@ const Dashboard = () => {
 
   const downloadCertificate = async (course) => {
     setCurrentCertificateCourse(course);
-
-    // Wait for certificate DOM to render
     setTimeout(async () => {
-      const canvas = await html2canvas(certificateRef.current, {
-        scale: 2,
-        useCORS: true
-      });
+      const canvas = await html2canvas(certificateRef.current, { scale: 2, useCORS: true });
       const imgData = canvas.toDataURL('image/png');
-
       const pdf = new jsPDF({
         orientation: 'landscape',
         unit: 'px',
         format: [canvas.width, canvas.height]
       });
-
       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
       pdf.save(`${course.title}_Certificate.pdf`);
-
-      setCurrentCertificateCourse(null); // Clean up after download
+      setCurrentCertificateCourse(null);
     }, 200);
   };
 
@@ -55,21 +46,12 @@ const Dashboard = () => {
       <h3>{course.title}</h3>
       <p className="tag">{course.category}</p>
       <p className="description">{course.description}</p>
-
       <div className="badge">
-        {isCompleted ? (
-          <span className="completed">🎉 Completed</span>
-        ) : (
-          <span className="enrolled">✅ Enrolled</span>
-        )}
+        {isCompleted ? <span className="completed">🎉 Completed</span> : <span className="enrolled">✅ Enrolled</span>}
       </div>
-
       {!isCompleted && (
-        <button className="quiz-btn" onClick={() => goToQuiz(course)}>
-          📝 Take Quiz
-        </button>
+        <button className="quiz-btn" onClick={() => goToQuiz(course)}>📝 Take Quiz</button>
       )}
-
       {isCompleted && (
         <button className="download-btn" onClick={() => downloadCertificate(course)}>
           📥 Download Certificate
@@ -85,55 +67,45 @@ const Dashboard = () => {
       <div className="section">
         <h2>📘 Enrolled Courses</h2>
         <div className="dashboard-grid">
-          {enrolledCourses.length > 0 ? (
-            enrolledCourses.map(course => renderCourseCard(course, false))
-          ) : (
-            <p className="empty-msg">No enrolled courses yet.</p>
-          )}
+          {enrolledCourses.length > 0
+            ? enrolledCourses.map(course => renderCourseCard(course, false))
+            : <p className="empty-msg">No enrolled courses yet.</p>}
         </div>
       </div>
 
       <div className="section">
         <h2>✅ Completed Courses</h2>
         <div className="dashboard-grid">
-          {completedCourses.length > 0 ? (
-            completedCourses.map(course => renderCourseCard(course, true))
-          ) : (
-            <p className="empty-msg">No completed courses yet.</p>
-          )}
+          {completedCourses.length > 0
+            ? completedCourses.map(course => renderCourseCard(course, true))
+            : <p className="empty-msg">No completed courses yet.</p>}
         </div>
       </div>
 
-      {/* 🔒 Hidden certificate content for rendering PDF */}
       {currentCertificateCourse && (
-        <div
-          ref={certificateRef}
-          style={{
-            width: '1120px',
-            height: '800px',
-            background: 'white',
-            border: '8px solid #4b5563',
-            boxShadow: '0 0 20px rgba(0,0,0,0.2)',
-            fontFamily: 'Georgia, serif',
-            color: '#1f2937',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '40px',
-            textAlign: 'center',
-            position: 'absolute',
-            top: '-9999px',
-            left: '-9999px',
-          }}
-        >
+        <div ref={certificateRef} style={{
+          width: '1120px',
+          height: '800px',
+          background: 'white',
+          border: '8px solid #4b5563',
+          boxShadow: '0 0 20px rgba(0,0,0,0.2)',
+          fontFamily: 'Georgia, serif',
+          color: '#1f2937',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '40px',
+          textAlign: 'center',
+          position: 'absolute',
+          top: '-9999px',
+          left: '-9999px',
+        }}>
           <h1 style={{ fontSize: '40px', color: '#2563eb', marginBottom: '30px' }}>
             Eduverse Certificate of Completion
           </h1>
           <p style={{ fontSize: '22px', maxWidth: '800px', lineHeight: 1.6 }}>
-            This is to proudly certify that
-            <strong> {dummyName} </strong>
-            has successfully completed the course:
+            This is to proudly certify that <strong>{dummyName}</strong> has successfully completed the course:
           </p>
           <h2 style={{ fontSize: '32px', color: '#10b981', margin: '30px 0' }}>
             {currentCertificateCourse.title}

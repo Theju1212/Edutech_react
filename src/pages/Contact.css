@@ -102,3 +102,59 @@ body {
   color: #00e6e6;
   text-decoration: none;
 }
+
+/* 🔁 Responsive Styles */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 20px;
+  }
+
+  .contact-title {
+    font-size: 28px;
+  }
+
+  .contact-description {
+    font-size: 16px;
+  }
+
+  .contact-box {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 15px;
+  }
+
+  .submit-btn {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 24px;
+  }
+
+  .contact-description {
+    font-size: 15px;
+  }
+
+  .contact-form label {
+    font-size: 14px;
+  }
+
+  .contact-info h3 {
+    font-size: 20px;
+  }
+
+  .contact-info p {
+    font-size: 14px;
+  }
+
+  .social-links a {
+    font-size: 14px;
+  }
+}
