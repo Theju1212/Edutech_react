@@ -12,25 +12,30 @@ function Header({ onClassChange }) {
       onClassChange(selectedClass);
     }
     navigate('/courses');
+    setMenuOpen(false); // close menu on navigation
   };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <header className="header">
       <h1 className="logo">Eduverse</h1>
 
-      <button className="hamburger" onClick={toggleMenu}>
+      <button className="hamburger" onClick={toggleMenu} aria-label="Menu">
         ☰
       </button>
 
       <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-        <Link to="/courses" onClick={() => setMenuOpen(false)}>Courses</Link>
-        <Link to="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
-        <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+        <Link to="/" onClick={closeMenu}>Home</Link>
+        <Link to="/courses" onClick={closeMenu}>Courses</Link>
+        <Link to="/dashboard" onClick={closeMenu}>Dashboard</Link>
+        <Link to="/contact" onClick={closeMenu}>Contact</Link>
       </nav>
     </header>
   );
